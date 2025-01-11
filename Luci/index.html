@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Norie</title>
+    <style>
+        /* General reset */
+        body, html {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Background Animation */
+        body {
+            background: linear-gradient(to bottom, #ffdde1, #ff80ab);
+            height: 100vh;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            position: relative;
+            text-align: center;
+        }
+
+        /* Animated Balloons */
+        .balloon {
+            position: absolute;
+            width: 50px;
+            height: 70px;
+            background-color: #ff4081;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: float 5s infinite ease-in-out;
+        }
+
+        .balloon::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            width: 2px;
+            height: 50px;
+            background: white;
+            transform: translateX(-50%);
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh); }
+            50% { opacity: 1; }
+            100% { transform: translateY(-10vh); opacity: 0.5; }
+        }
+
+        /* Heartfelt Message */
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px #ff80ab, 0 0 20px #ff4081; }
+            to { text-shadow: 0 0 20px #ff4081, 0 0 30px #ff80ab; }
+        }
+
+        p {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        /* Button to trigger hearts */
+        button {
+            background: #ff4081;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            box-shadow: 0px 4px 6px rgba(0,0,0,0.3);
+            transition: transform 0.2s ease;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+        }
+
+        /* Hearts Animation */
+        .heart {
+            position: absolute;
+            color: #ff80ab;
+            font-size: 2rem;
+            animation: rise 5s infinite linear;
+        }
+
+        @keyframes rise {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-100vh); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Content -->
+    <h1>Happy 17th Birthday, Norie!</h1>
+    <p>Dear Norie, I love you so much and wish you the most amazing day. You’re truly special!</p>
+    <button onclick="showHearts()">Click for a Surprise</button>
+
+    <!-- Script for Balloons and Hearts -->
+    <script>
+        // Balloons Animation
+        function createBalloon() {
+            const balloon = document.createElement('div');
+            balloon.className = 'balloon';
+            balloon.style.left = Math.random() * 100 + 'vw';
+            balloon.style.animationDuration = Math.random() * 3 + 3 + 's';
+            document.body.appendChild(balloon);
+
+            setTimeout(() => {
+                balloon.remove();
+            }, 8000);
+        }
+
+        setInterval(createBalloon, 800);
+
+        // Hearts Surprise
+        function showHearts() {
+            for (let i = 0; i < 20; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = '❤️';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = Math.random() * 2 + 3 + 's';
+                document.body.appendChild(heart);
+
+                setTimeout(() => {
+                    heart.remove();
+                }, 5000);
+            }
+        }
+    </script>
+</body>
+</html>
